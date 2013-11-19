@@ -1,8 +1,5 @@
 __author__ = 'davidyurek'
-
-
-def question():
-    """
+__question__ = """
     Checksums[2] are a tool that allow you to verify the integrity of data (useful for networking, security,
     error-correction, etc.). Though there are many different Checksum algorithms, the general usage is that you give
     raw-data to your algorithm of choice, and a block of data (usually smaller than the given data) is generated and can
@@ -28,3 +25,18 @@ def question():
     For each line of input, print the index (starting from 1) and the 16-bit Fletcher's checksum as a 4-digit
     hexadecimal number.
     """
+
+
+def fletcher16(string):
+    sum1, sum2 = 0, 0
+    for letter in string:
+        sum1 = (sum1 + ord(letter)) % 255
+        sum2 = (sum2 + sum1) % 255
+    return hex(sum2).replace('0x', '').upper() + hex(sum1).replace('0x', '').upper()
+
+number = int(input('How many lines? '))
+final = ''
+for i in range(1, number + 1):
+    line = input('Line: ')
+    final += str(i) + ' ' + fletcher16(line) + '\n'
+print(final)
