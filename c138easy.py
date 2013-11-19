@@ -1,8 +1,5 @@
 __author__ = 'davidyurek'
-
-
-def question():
-    """
+__question__ = """
     Colomb's Law[2] describes the repulsion force for two electrically charged particles. In very general terms, it
     describes the rate at which particles move away from each-other based on each particle's mass and distance from one
     another. Your goal is to compute the repulsion force for two electrons in 2D space. Assume that the two particles
@@ -23,7 +20,6 @@ def question():
     Output Description
     Print the force as a float at a minimum three decimal places precision.
     """
-    return None
 
 
 def colombcalc():

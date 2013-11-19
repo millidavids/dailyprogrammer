@@ -1,8 +1,5 @@
 __author__ = 'davidyurek'
-
-
-def question():
-    """
+__question__ = """
     It can be helpful sometimes to rotate a string 90-degrees, like a big vertical "SALES" poster or your business name
     on vertical neon lights, like this image from Las Vegas [2] . Your goal is to write a program that does this, but
     for multiples lines of text. This is very similar to a Matrix Transposition[3] , since the order we want returned is
@@ -16,7 +13,6 @@ def question():
     Output Description
     Simply print the given lines top-to-bottom. The first given line should be the left-most vertical line.
     """
-    return None
 
 
 def stringtrans():

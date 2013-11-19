@@ -1,8 +1,5 @@
 __author__ = 'davidyurek'
-
-
-def question():
-    """
+__question__ = """
     You are a computer science professor at South Harmon Institute of Technology, and are in dire need of automatic
     grading! The good news is you have all of your student's assignments in an easy-to-read format, making automation
     easy! You will be given a list of unique student names, and then a list of their assignment grades. All assignments
@@ -19,7 +16,6 @@ def question():
     On the first line of output, print the class' average grade. Then, for each student, print their name and average
     grade (up to two decimal points precision).
     """
-    return None
 
 
 def student_manager():

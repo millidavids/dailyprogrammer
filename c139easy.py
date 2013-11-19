@@ -1,10 +1,5 @@
 __author__ = 'davidyurek'
-
-from string import ascii_lowercase
-
-
-def question():
-    """
+__question__ = """
     Wikipedia[2] has a great definition for Pangrams: "A pangram or holoalphabetic sentence for a given alphabet is a
     sentence using every letter of the alphabet at least once." A good example is the English-language sentence "The
     quick brown fox jumps over the lazy dog[3] "; note how all 26 English-language letters are used in the sentence.
@@ -23,6 +18,9 @@ def question():
     Output Description
     For each line of input, print either "True" if the given line was a pangram, or "False" if not.
     """
+
+
+from string import ascii_lowercase
 
 
 def pangrams():

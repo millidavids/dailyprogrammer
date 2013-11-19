@@ -1,10 +1,5 @@
 __author__ = 'davidyurek'
-
-from random import randrange
-
-
-def question():
-    """
+__question__ = """
     Unix[2] , the famous multitasking and multi-user operating system, has several standards that defines Unix commands,
     system calls, subroutines, files, etc. Specifically within Version 7[3] (though this is included in many other Unix
     standards), there is a game called "arithmetic". To quote the Man Page[4] :Arithmetic types out simple arithmetic
@@ -28,6 +23,8 @@ def question():
     to repeat constants and operators. You may use either the star '*' or the letter 'x' characters to represent
     multiplication.
     """
+
+from random import randrange
 
 
 def arithmetic_equation():
