@@ -28,6 +28,9 @@ __question__ = """
 
 
 def fletcher16(string):
+    """
+    Convert string into a fletcher-16 checksum using hexadecimal numbers and stripping the '0x' off.
+    """
     sum1, sum2 = 0, 0
     for letter in string:
         sum1 = (sum1 + ord(letter)) % 255

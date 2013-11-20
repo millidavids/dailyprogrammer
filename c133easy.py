@@ -26,3 +26,30 @@ __question__ = """
     in the room. All of this should be on the same line and be space delimited; you may optionally include labels on
     this text, like in our sample output 1.
     """
+
+
+def foot_traffic(log_lines):
+    """
+    Take a number and iterate that many times of log lines then create a dictionary with room number as the key
+    and a list of total visitors and total time of visiting. Then divide the total time by visitors to find
+    average time visited.
+    """
+    dictionary = {}
+    for i in range(log_lines):
+        line = input('Line: ').split()
+        if dictionary.__contains__('Room ' + line[1]) and line[2].upper() == 'I':
+            dictionary['Room ' + line[1]][0] += 1
+            dictionary['Room ' + line[1]][1] -= int(line[3])
+        elif dictionary.__contains__('Room ' + line[1]) and line[2].upper() == 'O':
+            dictionary['Room ' + line[1]][1] += int(line[3])
+        else:
+            dictionary['Room ' + line[1]] = [1, - int(line[3])]
+    for x in dictionary:
+        dictionary[x][1] /= dictionary[x][0]
+    return dictionary
+
+
+if __name__ == '__main__':
+    log = dict(foot_traffic(int(input('How many log lines? '))))
+    for k, v in dict.items(log):
+        print(str(k) + ', ' + str(v[0]) + ' visitor(s), ' + str(v[1]) + ' average wait time.')
