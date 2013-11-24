@@ -27,7 +27,7 @@ from random import randrange
 
 def roll_the_dice(die_string):
     """
-    Gets the sum of dice rolls derived from thr string fed.
+    Gets the sum of dice rolls derived from the string fed.
     """
     die_list = die_string.split('d')
     number_of_die = int(die_list[0])
