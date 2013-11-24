@@ -17,3 +17,19 @@ __question__ = """
     that for the first line you do not need to print the "since" string (see example below). You should also print the
     final expression, which is the result (which should always be 91).
     """
+
+
+def mccarthy_ninety_one(number):
+    """
+    Execute the McCarthy 91 function. Print the steps.
+    """
+    if number > 100:
+        print('M(%d) since %d is greater than 100' % (number - 10, number))
+        return number - 10
+    else:
+        print('M(M(%d)) since %d is less than or equal to 100' % (number + 11, number))
+        return mccarthy_ninety_one(mccarthy_ninety_one(number + 11))
+
+
+if __name__ == '__main__':
+    print(mccarthy_ninety_one(int(input('Enter a number for McCarthy91: '))))

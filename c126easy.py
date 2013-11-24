@@ -25,3 +25,29 @@ __question__ = """
     sort/merge function inline into list B! If you do not understand the premise, please do ask questions and we will
     gladly answer. Good luck, and have fun!
     """
+
+
+def merge_sort(list_a, list_b):
+    """
+    Merge and sort in the first list into the second list without appending any extra values, using .remove(),
+    .insert(), .sort(), or any other helper built-ins.
+    """
+    for a_value in list_a:
+        for b_index in range(len(list_b)):
+            if list_b[b_index] > a_value:
+                list_b[b_index - 1] = a_value
+                break
+            elif b_index < len(list_b) - 1:
+                list_b[b_index] = list_b[b_index + 1]
+            else:
+                list_b[b_index] = a_value
+    return list_b
+
+
+if __name__ == '__main__':
+    list_a, list_b = input('First space delimited list: ').split(), input('Second space delimited list: ').split()
+    for index in range(len(list_a)):
+        list_a[index] = int(list_a[index])
+    for index in range(len(list_b)):
+        list_b[index] = int(list_b[index])
+    print(merge_sort(list_a, list_b))

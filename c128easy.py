@@ -14,3 +14,13 @@ __question__ = """
     You must take the given string, sum the digits, and then convert this sum to a string and print it out onto standard
     console. Then, you must repeat this process again and again until you only have one digit left.
     """
+
+
+def digit_sum_to_one_digit(numstring):
+    """
+    Circumvents the challenge to continually add the digits by modding by 9.
+    """
+    return int(numstring) % 9
+
+if __name__ == '__main__':
+    print(digit_sum_to_one_digit(input('Enter a string of digits: ')))
