@@ -58,7 +58,7 @@ def translate_braille(braille_data_list):
 
 
 if __name__ == '__main__':
-    file_name = 'trinitrophenylmethylnitramine.txt'
+    file_name = './res/trinitrophenylmethylnitramine.txt'
     raw_data = get_data(file_name)
     braille_data_list = get_braille_data(raw_data)
     print(translate_braille(braille_data_list))
