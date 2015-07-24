@@ -8,7 +8,7 @@ def get_squares file_name
       pluses = (0..line.length).find_all { |i| line[i, 1] == '+'}
       potential_top_edge_pairs = top_edge_pairs pluses
       for pair in potential_top_edge_pairs do
-        if /[+](-+)[+]/.match(line[pair[0]..pair[1]])
+        if /^[+](-+|\++)+[+]$/.match(line[pair[0]..pair[1]])
           print true
         end
       end
