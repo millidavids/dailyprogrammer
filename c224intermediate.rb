@@ -47,7 +47,6 @@ class DetectFourSidedFigures
     connected_pairs = []
     for pair in potential_top_edge_pairs do
       if valid_x_edge(line[pair[0]..pair[1]])
-        puts line[pair[0]..pair[1]]
         connected_pairs << pair
       end
     end
