@@ -14,9 +14,11 @@ class Decolumnizer
 
   def get_paragraphs text
     lines_array = text.split("\n")
-    lines_array = lines_array.map{ |line| remove_features line }
-    lines_array = lines_array.map(&:strip).map{ |line| dehyphenate line }
+    lines_array = lines_array.map{ |line| remove_features line }.map(&:strip)
+    lines_array.map { |line| line == '' ? "\n" : line }
+    lines_array = lines_array.map{ |line| line != "\n" ? dehyphenate(line) : line }
     return lines_array.join('')
+    # Figure out why it is not preserving the newlines!
   end
 
   def get_features_and_paragraphs text
