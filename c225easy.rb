@@ -1,5 +1,4 @@
-__author__ = 'davidyurek'
-__question = 'De-columnize a block of text, extracting the text, removing the features, and dehyphenating multiline words.'
+__question__ = 'De-columnize a block of text, extracting the text, removing the features, and dehyphenating multiline words.'
 
 class Decolumnizer
   attr_reader :paragraphs

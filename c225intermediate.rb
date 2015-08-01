@@ -1,0 +1,1 @@
+__question__ = "Today, we're going to honor those mathematicians of old. You will be given an image of a black circle on white background, and using the pixel data in the image, you are to come up with an estimate for pi."
