@@ -26,13 +26,13 @@ class EstimatePi
       if color == ChunkyPNG::Color(:black)
         m += 1
       end
-      puts @@equation.call(m, iteration + 1)
     end
+    return @@equation.call(m, iterations)
   end
 end
 
 if __FILE__ == $0
   estimate = EstimatePi.new('./res/1000x1000circle.png')
   iterations = $stdin.read.split("\n")[0].strip.to_i
-  estimate.pi_estimation_from_interations iterations
+  puts estimate.pi_estimation_from_interations iterations
 end
