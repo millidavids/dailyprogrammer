@@ -3,7 +3,11 @@ __challenge__ = "Convert a maze into a diagonal maze."
 class DiagonalMaze
 
   def initialize string
-    no_pluses = string.gsub('+', ' ')
+    line_array = string.split("\n")
+    width = line_array[0].length
+    height = line_array.length
+    puts width
+    puts height
   end
 end
 
