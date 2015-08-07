@@ -4,25 +4,37 @@ class ConnectFour
   def initialize
     @current_player = 'X'
     @board = Array.new(7) { |a| Array.new(6) { |i| '.' } }
-    @column_hash = { 'a': @board[0],
-                     'b': @board[1],
-                     'c': @board[2],
-                     'd': @board[3],
-                     'e': @board[4],
-                     'f': @board[5],
-                     'g': @board[6] }
+    @column_hash = { a: 0,
+                     b: 1,
+                     c: 2,
+                     d: 3,
+                     e: 4,
+                     f: 5,
+                     g: 6 }
     @end = false
   end
 
   def play
-    while !@end do
+    until winner do
       print_board
       valid_space = false
       until valid_space do
-        puts @current_player + ', place piece: '
+        print @current_player + ', place piece: '
         move = gets.chomp.downcase
-        if @column_hash.has_key?(move) && @board[move][6] == '.'
+        if @column_hash.has_key?(move.to_sym) &&
+           @board[@column_hash[move.to_sym]][5] == '.'
+          valid_space = true
+          place_piece @column_hash[move.to_sym]
+          if winner
+            return winner
+          end
+          if @current_player == 'X'
+            @current_player= 'O'
+          else
+            @current_player = 'X'
+          end
         else
+          puts "Not a valid play. Try again.\n\n"
         end
       end
     end
@@ -43,7 +55,19 @@ class ConnectFour
     puts "\n"
   end
 
-  def place_piece index
+  def place_piece column
+    @board[column].each_with_index do |space, index| 
+      if space == '.'
+        @board[column][index] = @current_player
+        break
+      else
+        next
+      end
+    end
+  end
+
+  def winner
+    false
   end
 end
 
