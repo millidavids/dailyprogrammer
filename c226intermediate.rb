@@ -12,21 +12,24 @@ class ConnectFour
                      f: 5,
                      g: 6 }
     @end = false
+    @move = 'a'.to_sym
+    @row = 0
   end
 
   def play
-    until winner do
+    until false do
       print_board
       valid_space = false
       until valid_space do
         print @current_player + ', place piece: '
-        move = gets.chomp.downcase
-        if @column_hash.has_key?(move.to_sym) &&
-           @board[@column_hash[move.to_sym]][5] == '.'
+        @move = gets.chomp.downcase.to_sym
+        if @column_hash.has_key?(@move) &&
+           @board[@column_hash[@move]][5] == '.'
           valid_space = true
-          place_piece @column_hash[move.to_sym]
+          @row = place_piece @column_hash[@move]
           if winner
-            return winner
+            print_board
+            return winner + ' wins!'
           end
           if @current_player == 'X'
             @current_player= 'O'
@@ -59,7 +62,7 @@ class ConnectFour
     @board[column].each_with_index do |space, index| 
       if space == '.'
         @board[column][index] = @current_player
-        break
+        return index
       else
         next
       end
@@ -67,11 +70,99 @@ class ConnectFour
   end
 
   def winner
+    return @current_player if check_horizontal ||
+                              check_vertical ||
+                              check_positive_diagonal ||
+                              check_negative_diagonal
+    false
+  end
+
+  def check_horizontal
+    streak = 1
+    @column_hash[@move] < 6 ? iterator = 1 : iterator = -1
+    until !@board[@column_hash[@move] + iterator].nil? ||
+          @board[@column_hash[@move] + iterator][@row] != @current_player
+      streak += 1
+      iterator += iterator > 0 ? 1 : -1
+      return true if streak == 4
+    end
+    if iterator > 0 
+      iterator = -1
+      until @board[@column_hash[@move] + iterator].nil? ||
+        @board[@column_hash[@move] + iterator][@row] != @current_player
+        streak += 1
+        iterator += -1
+        return true if streak == 4
+      end
+    end
+    false
+  end
+
+  def check_vertical
+    streak = 1
+    @row < 5 ? iterator = 1 : iterator = -1
+    until @board[@column_hash[@move]][@row + iterator].nil? ||
+          @board[@column_hash[@move]][@row + iterator] != @current_player
+      streak += 1
+      iterator += iterator > 0 ? 1 : -1
+      return true if streak == 4
+    end
+    if iterator > 0 
+      iterator = -1
+      until @board[@column_hash[@move]][@row + iterator].nil? ||
+        @board[@column_hash[@move]][@row + iterator] != @current_player
+        streak += 1
+        iterator += -1
+        return true if streak == 4
+      end
+    end
+    false
+  end
+
+  def check_positive_diagonal
+    streak = 1
+    (@row < 5 && @column_hash[@move] < 6) ? iterator = 1 : iterator = -1
+    until @board[@column_hash[@move] + iterator][@row + iterator].nil? ||
+          @board[@column_hash[@move] + iterator][@row + iterator] != @current_player
+      streak += 1
+      iterator += iterator > 0 ? 1 : -1
+      return true if streak == 4
+    end
+    if iterator > 0 
+      iterator = -1
+      until @board[@column_hash[@move] + iterator][@row + iterator].nil? ||
+        @board[@column_hash[@move] + iterator][@row + iterator] != @current_player
+        streak += 1
+        iterator += -1
+        return true if streak == 4
+      end
+    end
+    false
+  end
+
+  def check_negative_diagonal
+    streak = 1
+    (@row < 5 && @column_hash[@move] < 6) ? iterator = 1 : iterator = -1
+    until @board[@column_hash[@move] + iterator][@row - iterator].nil? ||
+          @board[@column_hash[@move] + iterator][@row - iterator] != @current_player
+      streak += 1
+      iterator += iterator > 0 ? 1 : -1
+      return true if streak == 4
+    end
+    if iterator > 0 
+      iterator = -1
+      until @board[@column_hash[@move] - iterator][@row + iterator].nil? ||
+        @board[@column_hash[@move] - iterator][@row + iterator] != @current_player
+        streak += 1
+        iterator += -1
+        return true if streak == 4
+      end
+    end
     false
   end
 end
 
 if __FILE__ == $0
   board = ConnectFour.new
-  board.play
+  puts board.play
 end
