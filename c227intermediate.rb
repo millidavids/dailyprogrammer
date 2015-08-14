@@ -1,3 +1,6 @@
+class ContiguousChain
+end
+
 def elements_greater_than_zero array
   array.map do |element|
     if element <= 0
