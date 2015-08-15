@@ -1,4 +1,6 @@
 class ContiguousChain
+  def initialize
+  end
 end
 
 def elements_greater_than_zero array
