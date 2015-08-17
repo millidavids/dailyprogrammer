@@ -23,4 +23,11 @@ if __FILE__ == $0
     coordinate_string = gets.chomp
     grid_size = coordinate_string.strip.split(' ').map { |int| int.to_i }
   end
+
+  print "\n Enter chain link appearance percentage (number only): "
+  link_percentage = gets.chomp.strip
+  until /^\d+$/.match(link_percentage) && link_percentage.to_i <= 100
+    print 'Not a valid percentage value, try again: '    
+    link_percentage = gets.chomp.strip
+  end
 end
