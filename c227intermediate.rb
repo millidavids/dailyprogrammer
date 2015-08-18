@@ -1,5 +1,7 @@
 class ContiguousChain
-  def initialize
+  def initialize grid_size link_percentage
+    @grid_size = grid_size
+    @link_percentage = link_percentage
   end
 end
 
