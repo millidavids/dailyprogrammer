@@ -1,10 +1,10 @@
 class ContiguousChain
+  attr_accessor :grid
 
   def initialize grid_size, link_percentage
     @grid_size = grid_size
     @link_percentage = link_percentage
     @grid = generate_grid
-    puts @grid
   end
 
   private
@@ -50,4 +50,5 @@ if __FILE__ == $0
   end
 
   cc = ContiguousChain.new(grid_size, link_percentage.to_i)
+  puts cc.grid
 end
