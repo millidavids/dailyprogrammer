@@ -19,6 +19,9 @@ class ContiguousChain
     end
     return grid
   end
+
+  def grid_array
+  end
 end
 
 def elements_greater_than_zero array
