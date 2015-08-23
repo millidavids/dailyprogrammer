@@ -5,6 +5,9 @@ class ContiguousChain
     @grid_size = grid_size
     @link_percentage = link_percentage
     @grid = generate_grid
+    @grid_array = @grid.split("\n")
+    @chains = []
+    @current_coordinates = [0, 0]
   end
 
   private
@@ -20,9 +23,7 @@ class ContiguousChain
     return grid
   end
 
-  def grid_array
-    return @grid.split("\n")
-  end
+  def 
 end
 
 def elements_greater_than_zero array
