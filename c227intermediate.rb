@@ -21,6 +21,7 @@ class ContiguousChain
   end
 
   def grid_array
+    return @grid.split("\n")
   end
 end
 
