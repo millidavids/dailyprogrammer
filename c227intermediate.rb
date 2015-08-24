@@ -28,6 +28,9 @@ class ContiguousChain
 
   def check_right
   end
+
+  def check_left
+  end
 end
 
 def elements_greater_than_zero array
