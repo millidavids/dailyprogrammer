@@ -23,7 +23,14 @@ class ContiguousChain
     return grid
   end
 
-  def 
+  def check_down
+  end
+
+  def check_left
+  end
+  
+  def check_right
+  end
 end
 
 def elements_greater_than_zero array
