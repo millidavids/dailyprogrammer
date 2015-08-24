@@ -26,9 +26,6 @@ class ContiguousChain
   def check_down
   end
 
-  def check_left
-  end
-  
   def check_right
   end
 end
