@@ -23,13 +23,28 @@ class ContiguousChain
     return grid
   end
 
-  def check_down
+  def build_chains
+    @grid_array.each_with_index do |line, l_index|
+      line.split('').each_with_index do |char, c_index|
+        if (char == 'x')
+          check_point(Array.[](c_index, l_index))
+        else
+          next
+        end
+      end
+    end
   end
 
-  def check_right
+  def check_point
   end
 
-  def check_left
+  def check_from_up
+  end
+
+  def check_from_right
+  end
+
+  def check_from_left
   end
 end
 
