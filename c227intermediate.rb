@@ -50,16 +50,16 @@ class ContiguousChain
   def check_chain coordinate_pair
     if coordinate_pair[1] <= (@grid_array.size - 1) &&
        @grid_array[coordinate_pair[1] + 1][coordinate_pair[0]] == 'x'
-      return check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] + 1))
+      new_cord = check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] + 1))
     elsif coordinate_pair[0] <= (@grid_array[0].size - 1) &&
           @grid_array[coordinate_pair[1]][coordinate_pair[0] + 1] == 'x'
-      return check_from_left(Array.[](coordinate_pair[0] + 1, coordinate_pair[1]))
+      new_cord = check_from_left(Array.[](coordinate_pair[0] + 1, coordinate_pair[1]))
     elsif coordinate_pair[0] > 0 &&
           @grid_array[coordinate_pair[1]][coordinate_pair[0] - 1] == 'x'
-      return check_from_right(Array.[](coordinate_pair[0] - 1, coordinate_pair[1]))
+      new_cord = check_from_right(Array.[](coordinate_pair[0] - 1, coordinate_pair[1]))
     elsif coordinate_pair[1] > 0 &&
           @grid_array[coordinate_pair[1] - 1][coordinate_pair[0]] == 'x'
-      return check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] - 1))
+      new_cord = check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] - 1))
     else
       return coordinate_pair
     end
@@ -68,13 +68,13 @@ class ContiguousChain
   def check_from_top coordinate_pair
     if coordinate_pair[1] <= (@grid_array.size - 1) &&
        @grid_array[coordinate_pair[1] + 1][coordinate_pair[0]] == 'x'
-      return check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] + 1))
+      new_cord = check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] + 1))
     elsif coordinate_pair[0] <= (@grid_array[0].size - 1) &&
           @grid_array[coordinate_pair[1]][coordinate_pair[0] + 1] == 'x'
-      return check_from_left(Array.[](coordinate_pair[0] + 1, coordinate_pair[1]))
+      new_cord = check_from_left(Array.[](coordinate_pair[0] + 1, coordinate_pair[1]))
     elsif coordinate_pair[0] > 0 &&
           @grid_array[coordinate_pair[1]][coordinate_pair[0] - 1] == 'x'
-      return check_from_right(Array.[](coordinate_pair[0] - 1, coordinate_pair[1]))
+      new_cord = check_from_right(Array.[](coordinate_pair[0] - 1, coordinate_pair[1]))
     else
       return coordinate_pair
     end
@@ -83,13 +83,13 @@ class ContiguousChain
   def check_from_left coordinate_pair
     if coordinate_pair[1] <= (@grid_array.size - 1) &&
        @grid_array[coordinate_pair[1] + 1][coordinate_pair[0]] == 'x'
-      return check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] + 1))
+      new_cord = check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] + 1))
     elsif coordinate_pair[0] <= (@grid_array[0].size - 1) &&
           @grid_array[coordinate_pair[1]][coordinate_pair[0] + 1] == 'x'
-      return check_from_left(Array.[](coordinate_pair[0] + 1, coordinate_pair[1]))
+      new_cord = check_from_left(Array.[](coordinate_pair[0] + 1, coordinate_pair[1]))
     elsif coordinate_pair[1] > 0 &&
           @grid_array[coordinate_pair[1] - 1][coordinate_pair[0]] == 'x'
-      return check_from_down(Array.[](coordinate_pair[0], coordinate_pair[1] - 1))
+      new_cord = check_from_down(Array.[](coordinate_pair[0], coordinate_pair[1] - 1))
     else
       return coordinate_pair
     end
@@ -98,30 +98,28 @@ class ContiguousChain
   def check_from_right coordinate_pair
     if coordinate_pair[1] <= (@grid_array.size - 1) &&
        @grid_array[coordinate_pair[1] + 1][coordinate_pair[0]] == 'x'
-      return check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] + 1))
+      new_cord = check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] + 1))
     elsif coordinate_pair[0] > 0 &&
           @grid_array[coordinate_pair[1]][coordinate_pair[0] - 1] == 'x'
-      return check_from_right(Array.[](coordinate_pair[0] - 1, coordinate_pair[1]))
+      new_cord = check_from_right(Array.[](coordinate_pair[0] - 1, coordinate_pair[1]))
     elsif coordinate_pair[1] > 0 &&
           @grid_array[coordinate_pair[1] - 1][coordinate_pair[0]] == 'x'
-      return check_from_down(Array.[](coordinate_pair[0], coordinate_pair[1] - 1))
+      new_cord = check_from_down(Array.[](coordinate_pair[0], coordinate_pair[1] - 1))
     else
       return coordinate_pair
     end
   end
   
   def check_from_down coordinate_pair
-    if coordinate_pair[1] == @grid_array.size
-      return false
-    elsif coordinate_pair[0] <= (@grid_array[0].size - 1) &&
+    if coordinate_pair[0] <= (@grid_array[0].size - 1) &&
           @grid_array[coordinate_pair[1]][coordinate_pair[0] + 1] == 'x'
-      return check_from_left(Array.[](coordinate_pair[0] + 1, coordinate_pair[1]))
+      new_cord = check_from_left(Array.[](coordinate_pair[0] + 1, coordinate_pair[1]))
     elsif coordinate_pair[0] > 0 &&
           @grid_array[coordinate_pair[1]][coordinate_pair[0] - 1] == 'x'
-      return check_from_right(Array.[](coordinate_pair[0] - 1, coordinate_pair[1]))
+      new_cord = check_from_right(Array.[](coordinate_pair[0] - 1, coordinate_pair[1]))
     elsif coordinate_pair[1] > 0 &&
           @grid_array[coordinate_pair[1] - 1][coordinate_pair[0]] == 'x'
-      return check_from_down(Array.[](coordinate_pair[0], coordinate_pair[1] - 1))
+      new_cord = check_from_down(Array.[](coordinate_pair[0], coordinate_pair[1] - 1))
     else
       return Array.[](coordinate_pair[0], coordinate_pair[1])
     end
