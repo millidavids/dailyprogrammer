@@ -27,7 +27,7 @@ class ContiguousChain
     @grid_array.each_with_index do |line, l_index|
       line.split('').each_with_index do |char, c_index|
         if (char == 'x')
-          check_point(Array.[](c_index, l_index))
+          check_chain(Array.[](c_index, l_index))
         else
           next
         end
@@ -35,16 +35,7 @@ class ContiguousChain
     end
   end
 
-  def check_point
-  end
-
-  def check_from_up
-  end
-
-  def check_from_right
-  end
-
-  def check_from_left
+  def check_chain coordinate_pair
   end
 end
 
