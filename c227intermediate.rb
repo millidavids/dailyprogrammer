@@ -8,6 +8,11 @@ class ContiguousChain
     @grid_array = @grid.split("\n")
     @chains = []
     @current_coordinates = [0, 0]
+    build_chains
+  end
+
+  def chain_count
+    return @chains.size
   end
 
   private
@@ -26,8 +31,15 @@ class ContiguousChain
   def build_chains
     @grid_array.each_with_index do |line, l_index|
       line.split('').each_with_index do |char, c_index|
-        if (char == 'x')
-          check_chain(Array.[](c_index, l_index))
+        if (char == 'x' && line[c_index + 1] == 'x')
+          next
+        elsif (char == 'x')
+          cord = check_chain(Array.[](c_index, l_index))
+          if @chains.include?(cord)
+            next
+          else
+            @chains << cord
+          end
         else
           next
         end
@@ -36,6 +48,83 @@ class ContiguousChain
   end
 
   def check_chain coordinate_pair
+    if coordinate_pair[1] <= (@grid_array.size - 1) &&
+       @grid_array[coordinate_pair[1] + 1][coordinate_pair[0]] == 'x'
+      return check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] + 1))
+    elsif coordinate_pair[0] <= (@grid_array[0].size - 1) &&
+          @grid_array[coordinate_pair[1]][coordinate_pair[0] + 1] == 'x'
+      return check_from_left(Array.[](coordinate_pair[0] + 1, coordinate_pair[1]))
+    elsif coordinate_pair[0] > 0 &&
+          @grid_array[coordinate_pair[1]][coordinate_pair[0] - 1] == 'x'
+      return check_from_right(Array.[](coordinate_pair[0] - 1, coordinate_pair[1]))
+    elsif coordinate_pair[1] > 0 &&
+          @grid_array[coordinate_pair[1] - 1][coordinate_pair[0]] == 'x'
+      return check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] - 1))
+    else
+      return coordinate_pair
+    end
+  end
+
+  def check_from_top coordinate_pair
+    if coordinate_pair[1] <= (@grid_array.size - 1) &&
+       @grid_array[coordinate_pair[1] + 1][coordinate_pair[0]] == 'x'
+      return check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] + 1))
+    elsif coordinate_pair[0] <= (@grid_array[0].size - 1) &&
+          @grid_array[coordinate_pair[1]][coordinate_pair[0] + 1] == 'x'
+      return check_from_left(Array.[](coordinate_pair[0] + 1, coordinate_pair[1]))
+    elsif coordinate_pair[0] > 0 &&
+          @grid_array[coordinate_pair[1]][coordinate_pair[0] - 1] == 'x'
+      return check_from_right(Array.[](coordinate_pair[0] - 1, coordinate_pair[1]))
+    else
+      return coordinate_pair
+    end
+  end
+  
+  def check_from_left coordinate_pair
+    if coordinate_pair[1] <= (@grid_array.size - 1) &&
+       @grid_array[coordinate_pair[1] + 1][coordinate_pair[0]] == 'x'
+      return check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] + 1))
+    elsif coordinate_pair[0] <= (@grid_array[0].size - 1) &&
+          @grid_array[coordinate_pair[1]][coordinate_pair[0] + 1] == 'x'
+      return check_from_left(Array.[](coordinate_pair[0] + 1, coordinate_pair[1]))
+    elsif coordinate_pair[1] > 0 &&
+          @grid_array[coordinate_pair[1] - 1][coordinate_pair[0]] == 'x'
+      return check_from_down(Array.[](coordinate_pair[0], coordinate_pair[1] - 1))
+    else
+      return coordinate_pair
+    end
+  end
+  
+  def check_from_right coordinate_pair
+    if coordinate_pair[1] <= (@grid_array.size - 1) &&
+       @grid_array[coordinate_pair[1] + 1][coordinate_pair[0]] == 'x'
+      return check_from_top(Array.[](coordinate_pair[0], coordinate_pair[1] + 1))
+    elsif coordinate_pair[0] > 0 &&
+          @grid_array[coordinate_pair[1]][coordinate_pair[0] - 1] == 'x'
+      return check_from_right(Array.[](coordinate_pair[0] - 1, coordinate_pair[1]))
+    elsif coordinate_pair[1] > 0 &&
+          @grid_array[coordinate_pair[1] - 1][coordinate_pair[0]] == 'x'
+      return check_from_down(Array.[](coordinate_pair[0], coordinate_pair[1] - 1))
+    else
+      return coordinate_pair
+    end
+  end
+  
+  def check_from_down coordinate_pair
+    if coordinate_pair[1] == @grid_array.size
+      return false
+    elsif coordinate_pair[0] <= (@grid_array[0].size - 1) &&
+          @grid_array[coordinate_pair[1]][coordinate_pair[0] + 1] == 'x'
+      return check_from_left(Array.[](coordinate_pair[0] + 1, coordinate_pair[1]))
+    elsif coordinate_pair[0] > 0 &&
+          @grid_array[coordinate_pair[1]][coordinate_pair[0] - 1] == 'x'
+      return check_from_right(Array.[](coordinate_pair[0] - 1, coordinate_pair[1]))
+    elsif coordinate_pair[1] > 0 &&
+          @grid_array[coordinate_pair[1] - 1][coordinate_pair[0]] == 'x'
+      return check_from_down(Array.[](coordinate_pair[0], coordinate_pair[1] - 1))
+    else
+      return Array.[](coordinate_pair[0], coordinate_pair[1])
+    end
   end
 end
 
@@ -69,4 +158,5 @@ if __FILE__ == $0
 
   cc = ContiguousChain.new(grid_size, link_percentage.to_i)
   puts cc.grid
+  puts cc.chain_count
 end
