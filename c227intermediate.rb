@@ -1,3 +1,5 @@
+require 'pry'
+
 class ContiguousChain
   attr_accessor :grid
 
@@ -63,6 +65,12 @@ class ContiguousChain
     else
       return coordinate_pair
     end
+    if new_cord[1] > coordinate_pair[1] ||
+       (new_cord[1] == coordinate_pair[1] && new_cord[0] > coordinate_pair[0])
+      return new_cord
+    else
+      return coordinate_pair
+    end
   end
 
   def check_from_top coordinate_pair
@@ -75,6 +83,12 @@ class ContiguousChain
     elsif coordinate_pair[0] > 0 &&
           @grid_array[coordinate_pair[1]][coordinate_pair[0] - 1] == 'x'
       new_cord = check_from_right(Array.[](coordinate_pair[0] - 1, coordinate_pair[1]))
+    else
+      return coordinate_pair
+    end
+    if new_cord[1] > coordinate_pair[1] ||
+       (new_cord[1] == coordinate_pair[1] && new_cord[0] > coordinate_pair[0])
+      return new_cord
     else
       return coordinate_pair
     end
@@ -93,6 +107,12 @@ class ContiguousChain
     else
       return coordinate_pair
     end
+    if new_cord[1] > coordinate_pair[1] ||
+       (new_cord[1] == coordinate_pair[1] && new_cord[0] > coordinate_pair[0])
+      return new_cord
+    else
+      return coordinate_pair
+    end
   end
   
   def check_from_right coordinate_pair
@@ -105,6 +125,12 @@ class ContiguousChain
     elsif coordinate_pair[1] > 0 &&
           @grid_array[coordinate_pair[1] - 1][coordinate_pair[0]] == 'x'
       new_cord = check_from_down(Array.[](coordinate_pair[0], coordinate_pair[1] - 1))
+    else
+      return coordinate_pair
+    end
+    if new_cord[1] > coordinate_pair[1] ||
+       (new_cord[1] == coordinate_pair[1] && new_cord[0] > coordinate_pair[0])
+      return new_cord
     else
       return coordinate_pair
     end
@@ -122,6 +148,12 @@ class ContiguousChain
       new_cord = check_from_down(Array.[](coordinate_pair[0], coordinate_pair[1] - 1))
     else
       return Array.[](coordinate_pair[0], coordinate_pair[1])
+    end
+    if new_cord[1] > coordinate_pair[1] ||
+       (new_cord[1] == coordinate_pair[1] && new_cord[0] > coordinate_pair[0])
+      return new_cord
+    else
+      return coordinate_pair
     end
   end
 end
