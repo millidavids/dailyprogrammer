@@ -1,7 +1,7 @@
 def dottie_number input
   dottie = Math.cos(input)
   puts dottie
-  until dottie.round(8) == Math.cos(dottie).round(8)
+  until dottie.round(15) == Math.cos(dottie).round(15)
     dottie = Math.cos(dottie)
     puts dottie
   end
