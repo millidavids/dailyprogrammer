@@ -1,3 +1,3 @@
 if __FILE__ == $0
-  input = gets.chomp.split(' ')
+  line_array = $stdin.read.split("\n")
 end
