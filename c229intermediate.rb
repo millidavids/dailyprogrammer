@@ -1,7 +1,7 @@
 class ReverseFizzBuzz
   def self.reversify input
     line_array = input.split("\n").map(&:strip)
-    return line_array.to_s
+    letter_number_hash = Hash.new
   end
 
   private
