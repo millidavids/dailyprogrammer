@@ -5,7 +5,6 @@ class ReverseFizzBuzz
     @pairs = []
     @ratios = []
     initial_data
-    build_ratios
     puts @pairs.to_s
     puts @frequencies.to_s
     puts @ratios.to_s
@@ -23,6 +22,10 @@ class ReverseFizzBuzz
           @frequencies[char] += 1
         end 
       end
+    end
+    build_ratios
+    0..(@pairs.length - 1).times do |index|
+      @pairs[index + 1][1] = @pairs[index][1] * @ratios[index][0]
     end
     @pairs.sort_by! { |x| @frequencies[x[0]] }.reverse!
   end
