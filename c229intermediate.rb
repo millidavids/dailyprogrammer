@@ -49,6 +49,10 @@ class ReverseFizzBuzz
       @ratios << line_ratios
     end
   end
+
+  def find_missing_letters
+    last_letter = @frequencies.keys.sort.last
+  end
 end
 
 if __FILE__ == $0
