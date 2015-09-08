@@ -5,9 +5,6 @@ class ReverseFizzBuzz
     @pairs = []
     @ratios = []
     initial_data
-    puts @pairs.to_s
-    puts @frequencies.to_s
-    puts @ratios.to_s
   end
 
   private
