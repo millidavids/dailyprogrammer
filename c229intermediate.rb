@@ -5,6 +5,7 @@ class ReverseFizzBuzz
     @pairs = []
     @ratios = []
     initial_data
+    puts @frequencies.to_s
   end
 
   private
@@ -25,6 +26,7 @@ class ReverseFizzBuzz
       @pairs[index + 1][1] = @pairs[index][1] * @ratios[index][0]
     end
     @pairs.sort_by! { |x| @frequencies[x[0]] }.reverse!
+    find_missing_letters
   end
 
   def build_ratios
@@ -52,10 +54,16 @@ class ReverseFizzBuzz
 
   def find_missing_letters
     last_letter = @frequencies.keys.sort.last
+    (97..last_letter.ord).each do |ascii_value|
+      unless @frequencies.has_key?(ascii_value.chr)
+        @frequencies[ascii_value.chr] = 0
+        @pairs << [ascii_value.chr, '-']
+      end
+    end
   end
 end
 
 if __FILE__ == $0
-  input = $stdin.read
+  input = $stdin.read.downcase
   rfb = ReverseFizzBuzz.new(input)
 end
