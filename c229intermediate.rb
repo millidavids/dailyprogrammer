@@ -1,4 +1,4 @@
-# UNFINISHED!!!
+# Abandoning, too busy at work. Also too stupid :>
 
 class ReverseFizzBuzz
   def initialize input
