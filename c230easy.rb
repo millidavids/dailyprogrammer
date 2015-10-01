@@ -1,3 +1,5 @@
+require 'jsonpath'
+
 def json_hunt
 end
 
