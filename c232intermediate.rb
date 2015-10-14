@@ -1,7 +1,9 @@
 class GrandmasHouse
-  def initialize n_coordinates, coordinates_pairs
-    puts n_coordinates
-    puts coordinates_pairs.to_s
+  attr_reader :n_pairs, :closest_pairs
+
+  def initialize n_pairs, coordinates_pairs
+    @n_pairs = n_pairs
+    @coordinates_pairs = coordinates_pairs
   end
 end
 
