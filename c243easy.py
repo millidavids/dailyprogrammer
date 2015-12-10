@@ -2,7 +2,7 @@
 
 import sys
 import math
- 
+
 def deficiencyCheck(n):
   result = sum([x+n/x for x in range(1,int(math.ceil(math.sqrt(n)))) if n%x==0])-2*n
   if result > 0:
