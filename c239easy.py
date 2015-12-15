@@ -1,7 +1,16 @@
 #!/usr/bin/env python
 
 def gameOfThrees(num):
-  return
+  while num != 1:
+    mod = num % 3
+    if mod == 0:
+      num /= 3
+    elif mod == 1:
+      num -= 1
+    else:
+      num += 1
+    print num
 
 if __name__ == '__main__':
-  num = raw_input('Number for game of threes: ')
+  num = int(raw_input('Number for game of threes: '))
+  gameOfThrees(num)
