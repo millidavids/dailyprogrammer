@@ -6,9 +6,9 @@ def gameOfThrees(num):
     if mod == 0:
       num /= 3
     elif mod == 1:
-      num -= 1
+      num = (num - 1) / 3
     else:
-      num += 1
+      num = (num + 1) / 3
     print num
 
 if __name__ == '__main__':
