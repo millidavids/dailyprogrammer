@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-import sys
+import sys, re
 
 def dateDilemma(string):
-  return
+  r = re.compile(r'\d+')
+  return r.findall(string)
 
 if __name__ == '__main__':
   dates = sys.stdin.read().strip().split('\n')
