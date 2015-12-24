@@ -3,4 +3,4 @@
 import sys
 
 if __name__ == '__main__':
-  hours = raw_input('Hours: ')
+  hours = sys.stdin.read().split('\n')
